@@ -313,6 +313,7 @@ button:focus-visible { outline: 3px solid var(--brass); outline-offset: 3px; }
       if (!ctx) {
         const AC = window.AudioContext || window.webkitAudioContext;
         if (!AC) return;
+        navigator.audioSession && (navigator.audioSession.type = 'playback');   // iPhone の消音モードでもスピーカーから鳴らす
         ctx = new AC();
         master = ctx.createGain(); master.gain.value = 0.8; master.connect(ctx.destination);
         nbuf = ctx.createBuffer(1, ctx.sampleRate, ctx.sampleRate);
