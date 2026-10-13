@@ -2,7 +2,13 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<style>html { touch-action: manipulation; }</style>
+<script>
+/* 画面の拡大を止める（2本指で広げる・2回タップ）。iPhone は上の指定だけだと無視することがあるので、2本指の動きも直接止める */
+['gesturestart', 'gesturechange', 'gestureend'].forEach(t => document.addEventListener(t, e => e.preventDefault(), { passive: false }));
+document.addEventListener('touchmove', e => { if (e.touches.length > 1) e.preventDefault(); }, { passive: false });
+</script>
 <title>ブラックジャック</title>
 <link rel="manifest" href="./manifest.webmanifest">
 <meta name="theme-color" content="#0d0f0e">
