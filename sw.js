@@ -1,5 +1,5 @@
 /* ブラックジャック — 電波が無くても開けるようにするための小さな仕掛け */
-const V = "blackjack-v2";
+const V = "blackjack-v3";
 const SHELL = ["./", "./index.html", "./manifest.webmanifest", "./icon-32.png", "./icon-180.png", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", e => {
@@ -7,10 +7,11 @@ self.addEventListener("install", e => {
   e.waitUntil(caches.open(V).then(c => c.addAll(SHELL)).catch(() => {}));
 });
 
+/* 同じ github.io の下にほかのアプリもあるので、消すのは自分（blackjack-）の古い控えだけ */
 self.addEventListener("activate", e => {
   e.waitUntil(
     caches.keys()
-      .then(ks => Promise.all(ks.filter(k => k !== V).map(k => caches.delete(k))))
+      .then(ks => Promise.all(ks.filter(k => k.startsWith("blackjack-") && k !== V).map(k => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });
