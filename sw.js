@@ -1,6 +1,7 @@
 /* ブラックジャック — 電波が無くても開けるようにするための小さな仕掛け */
-const V = "blackjack-v3";
-const SHELL = ["./", "./index.html", "./manifest.webmanifest", "./icon-32.png", "./icon-180.png", "./icon-192.png", "./icon-512.png"];
+const V = "blackjack-v4";
+const SHELL = ["./", "./index.html", "./manifest.webmanifest", "./icon-32.png", "./icon-180.png", "./icon-192.png", "./icon-512.png",
+               "./se/chip_1.mp3", "./se/chip_2.mp3", "./se/chip_3.mp3", "./se/chip_4.mp3", "./se/chip_5.mp3", "./se/chip_6.mp3", "./se/chips_1.mp3", "./se/chips_2.mp3", "./se/chips_3.mp3", "./se/chips_4.mp3", "./se/chips_5.mp3", "./se/chips_6.mp3", "./se/deal_1.mp3", "./se/deal_2.mp3", "./se/deal_3.mp3", "./se/deal_4.mp3", "./se/deal_5.mp3", "./se/deal_6.mp3", "./se/deal_7.mp3", "./se/deal_8.mp3", "./se/flip_1.mp3", "./se/flip_2.mp3", "./se/flip_3.mp3", "./se/flip_4.mp3"];
 
 self.addEventListener("install", e => {
   self.skipWaiting();
